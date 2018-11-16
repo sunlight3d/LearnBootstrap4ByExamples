@@ -5,14 +5,16 @@
  */
 import React, { Component } from 'react'
 import { Text, StyleSheet, View } from 'react-native'
-const FBSDK = require('react-native-fbsdk')
-const {
-  LoginManager,
-} = FBSDK
+// const FBSDK = require('react-native-fbsdk')
+// const {
+//   LoginManager,
+// } = FBSDK
 import Ionicons from 'react-native-vector-icons/Ionicons'
+import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
 export default class Login extends Component {
   async loginWithFacebook() {
+    /*
     LoginManager.logInWithReadPermissions(['public_profile']).then(
       function(result) {
         if (result.isCancelled) {
@@ -26,14 +28,16 @@ export default class Login extends Component {
         alert('Login failed with error: ' + error);
       }
     )
+    */
   }
   render() {
     const FacebookButton = () => (
-      <Icon.Button name="facebook"
+      <FontAwesome.Button name="facebook"
+        style={styles.loginButton}
         backgroundColor="#3b5998"
         onPress={this.loginWithFacebook}>
         Login with Facebook
-      </Icon.Button>
+      </FontAwesome.Button>
     )
     return (
       <View style={styles.container}>
@@ -42,8 +46,8 @@ export default class Login extends Component {
           <Text style={styles.title}>Sharing your images for everybody</Text>
         </View>
         <View style={styles.down}>    
-        <FacebookButton />      
-      </View>
+          <FacebookButton />      
+        </View>
       </View >
     )
   }
@@ -66,10 +70,10 @@ const styles = StyleSheet.create({
   },
   down: {
     flex: 1,
-    flexDirection: 'row',
-    // justifyContent: 'center',  
+    flexDirection: 'column',
+    justifyContent: 'flex-start',  
     // backgroundColor:'powderblue'   
-    // alignItems: 'center',      
+    alignItems: 'center',      
   },
   title: {
     fontFamily: 'SourceSansPro-Light',// Run react-native link         
@@ -79,7 +83,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   loginButton: {
-    width: 350,
-    height: 40
+    width: 300,
+    height: 45,
+    justifyContent: 'center',  
   }
 });
