@@ -6,9 +6,16 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest"
   },
+  "rnpm": {
+    "assets": [
+      "./assets/fonts/Source_Sans_Pro/"
+    ]
+  },
   "dependencies": {
     "react": "16.6.1",
     "react-native": "0.57.5",
+    "react-native-fbsdk": "^0.8.0",
+    "react-native-fontawesome": "^6.0.0",
     "react-native-vector-icons": "^6.0.2"
   },
   "devDependencies": {
