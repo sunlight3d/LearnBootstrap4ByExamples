@@ -20,9 +20,9 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome'
 export default class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
-      email:'',
-      password
+    this.state = {
+      email: '',
+      password: ''
     }
   }
   async loginWithFacebook() {
@@ -50,10 +50,13 @@ export default class Login extends Component {
       <FontAwesome.Button name="facebook"
         style={styles.facebookButton}
         backgroundColor="#3b5998"
-        onPress={this.loginFacebook}>
-        Login with Facebook
+        onPress={this.loginFacebook}>        
+        <Text style={styles.loginButtonTitle}>Login with Facebook</Text>
       </FontAwesome.Button>
     )
+    const Divider = () => {
+      
+    }
     return (
       <View style={styles.container}>
         <View style={styles.up}>
@@ -61,11 +64,25 @@ export default class Login extends Component {
           <Text style={styles.title}>Sharing your images for everybody</Text>
         </View>
         <View style={styles.middle}>
-          <TextInput style={styles.textInput}
-            onChangeText={(email) => this.setState({ email })}
-            value={this.state.email}
-          />
-          <TouchableOpacity onPress={this._onLogin} style={styles.button}>
+          <View style={styles.textInputContainer}>
+            <TextInput style={styles.textInput}
+              onChangeText={(email) => this.setState({ email })}
+              textContentType='emailAddress'
+              keyboardType='email-address'
+              placeholder="Enter your email"
+              value={this.state.email}
+            />
+          </View>
+          <View style={styles.textInputContainer}>
+            <TextInput style={styles.textInput}
+              onChangeText={(password) => this.setState({ password })}
+              secureTextEntry={true}
+              placeholder="Enter your password"
+              value={this.state.password}
+            />
+          </View>
+          <TouchableOpacity onPress={this._onLogin} style={styles.loginButton}>
+            <Text style={styles.loginButtonTitle}>LOGIN</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.down}>
@@ -112,20 +129,34 @@ const styles = StyleSheet.create({
     width: 400,
     textAlign: 'center',
   },
+  loginButtonTitle: {
+    fontFamily: 'SourceSansPro-Regular',
+    fontSize: 18,
+    color: 'white'
+  },
   facebookButton: {
     width: 300,
     height: 45,
+    borderRadius: 6,
     justifyContent: 'center',
-  },  
+  },
+  textInputContainer: {
+    paddingHorizontal: 10,
+    borderRadius: 6,
+    marginBottom: 20,
+    backgroundColor: 'rgba(255,255,255,0.3)'
+  },
   textInput: {
-    width: 300,
+    width: 280,
     height: 45,
     justifyContent: 'center',
   },
-  button: {
+  loginButton: {
     width: 300,
     height: 45,
+    borderRadius: 6,
+    justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(255,255,255,0.5)'
+    backgroundColor: 'rgb(221, 97, 97)'
   },
 });
