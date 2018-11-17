@@ -8,7 +8,10 @@ import {
   Text,
   StyleSheet,
   View,
-  TouchableOpacity, TextInput
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  TextInput,
+  Keyboard,
 } from 'react-native'
 // const FBSDK = require('react-native-fbsdk')
 // const {
@@ -46,49 +49,55 @@ export default class Login extends Component {
 
   }
   render() {
-    const FacebookButton = () => (
+    const FacebookButton = (props) => (
       <FontAwesome.Button name="facebook"
-        style={styles.facebookButton}
+        {...props}
         backgroundColor="#3b5998"
-        onPress={this.loginFacebook}>        
+        onPress={this.loginFacebook}>
         <Text style={styles.loginButtonTitle}>Login with Facebook</Text>
       </FontAwesome.Button>
     )
-    const Divider = () => {
-      
+    const Divider = (props) => {
+      return <View {...props}>
+        <View style={styles.line}></View>
+        <Text style={styles.textOR}>OR</Text>
+        <View style={styles.line}></View>
+      </View>
     }
     return (
-      <View style={styles.container}>
-        <View style={styles.up}>
-          <Ionicons name="ios-speedometer" size={100} color="rgb(221, 97, 97)" />
-          <Text style={styles.title}>Sharing your images for everybody</Text>
-        </View>
-        <View style={styles.middle}>
-          <View style={styles.textInputContainer}>
-            <TextInput style={styles.textInput}
-              onChangeText={(email) => this.setState({ email })}
-              textContentType='emailAddress'
-              keyboardType='email-address'
-              placeholder="Enter your email"
-              value={this.state.email}
-            />
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.container}>
+          <View style={styles.up}>
+            <Ionicons name="ios-speedometer" size={100} color="rgb(221, 97, 97)" />
+            <Text style={styles.title}>Sharing your images for everybody</Text>
           </View>
-          <View style={styles.textInputContainer}>
-            <TextInput style={styles.textInput}
-              onChangeText={(password) => this.setState({ password })}
-              secureTextEntry={true}
-              placeholder="Enter your password"
-              value={this.state.password}
-            />
+          <View style={styles.down}>
+            <View style={styles.textInputContainer}>
+              <TextInput style={styles.textInput}
+                onChangeText={(email) => this.setState({ email })}
+                textContentType='emailAddress'
+                keyboardType='email-address'
+                placeholder="Enter your email"
+                value={this.state.email}
+              />
+            </View>
+            <View style={styles.textInputContainer}>
+              <TextInput style={styles.textInput}
+                onChangeText={(password) => this.setState({ password })}
+                secureTextEntry={true}
+                placeholder="Enter your password"
+                value={this.state.password}
+              />
+            </View>
+            <TouchableOpacity onPress={this._onLogin} style={styles.loginButton}>
+              <Text style={styles.loginButtonTitle}>LOGIN</Text>
+            </TouchableOpacity>
+            <Divider style={styles.divider}></Divider>
+            <FacebookButton style={styles.facebookButton} />
           </View>
-          <TouchableOpacity onPress={this._onLogin} style={styles.loginButton}>
-            <Text style={styles.loginButtonTitle}>LOGIN</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.down}>
-          <FacebookButton />
-        </View>
-      </View >
+        </View >
+      </TouchableWithoutFeedback>
+
     )
   }
 }
@@ -102,24 +111,17 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgb(234, 195, 176)'
   },
   up: {
-    flex: 1,
+    flex: 3,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
     // backgroundColor:'green', 
   },
-  middle: {
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    // backgroundColor:'powderblue'   
-    alignItems: 'center',
-  },
   down: {
-    flex: 1,
+    flex: 7,
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    // backgroundColor:'powderblue'   
+    // backgroundColor:'powderblue',   
     alignItems: 'center',
   },
   title: {
@@ -133,12 +135,6 @@ const styles = StyleSheet.create({
     fontFamily: 'SourceSansPro-Regular',
     fontSize: 18,
     color: 'white'
-  },
-  facebookButton: {
-    width: 300,
-    height: 45,
-    borderRadius: 6,
-    justifyContent: 'center',
   },
   textInputContainer: {
     paddingHorizontal: 10,
@@ -159,4 +155,27 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'rgb(221, 97, 97)'
   },
+  facebookButton: {
+    width: 300,
+    height: 45,
+    borderRadius: 6,
+    justifyContent: 'center',
+  },
+  //divider
+  divider: {
+    height: 40,
+    width: 298,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  line: {
+    height: 1,
+    flex: 2,
+    backgroundColor: 'black'
+  },
+  textOR: {
+    flex: 1,
+    textAlign: 'center'
+  }
 });
