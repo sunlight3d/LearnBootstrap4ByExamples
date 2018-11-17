@@ -4,7 +4,12 @@
  react-native link
  */
 import React, { Component } from 'react'
-import { Text, StyleSheet, View } from 'react-native'
+import {
+  Text,
+  StyleSheet,
+  View,
+  TouchableOpacity, TextInput
+} from 'react-native'
 // const FBSDK = require('react-native-fbsdk')
 // const {
 //   LoginManager,
@@ -13,6 +18,13 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
 export default class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { 
+      email:'',
+      password
+    }
+  }
   async loginWithFacebook() {
     /*
     LoginManager.logInWithReadPermissions(['public_profile']).then(
@@ -30,12 +42,15 @@ export default class Login extends Component {
     )
     */
   }
+  _onLogin() {
+
+  }
   render() {
     const FacebookButton = () => (
       <FontAwesome.Button name="facebook"
-        style={styles.loginButton}
+        style={styles.facebookButton}
         backgroundColor="#3b5998"
-        onPress={this.loginWithFacebook}>
+        onPress={this.loginFacebook}>
         Login with Facebook
       </FontAwesome.Button>
     )
@@ -45,8 +60,16 @@ export default class Login extends Component {
           <Ionicons name="ios-speedometer" size={100} color="rgb(221, 97, 97)" />
           <Text style={styles.title}>Sharing your images for everybody</Text>
         </View>
-        <View style={styles.down}>    
-          <FacebookButton />      
+        <View style={styles.middle}>
+          <TextInput style={styles.textInput}
+            onChangeText={(email) => this.setState({ email })}
+            value={this.state.email}
+          />
+          <TouchableOpacity onPress={this._onLogin} style={styles.button}>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.down}>
+          <FacebookButton />
         </View>
       </View >
     )
@@ -68,12 +91,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     // backgroundColor:'green', 
   },
+  middle: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    // backgroundColor:'powderblue'   
+    alignItems: 'center',
+  },
   down: {
     flex: 1,
     flexDirection: 'column',
-    justifyContent: 'flex-start',  
+    justifyContent: 'flex-start',
     // backgroundColor:'powderblue'   
-    alignItems: 'center',      
+    alignItems: 'center',
   },
   title: {
     fontFamily: 'SourceSansPro-Light',// Run react-native link         
@@ -82,9 +112,20 @@ const styles = StyleSheet.create({
     width: 400,
     textAlign: 'center',
   },
-  loginButton: {
+  facebookButton: {
     width: 300,
     height: 45,
-    justifyContent: 'center',  
-  }
+    justifyContent: 'center',
+  },  
+  textInput: {
+    width: 300,
+    height: 45,
+    justifyContent: 'center',
+  },
+  button: {
+    width: 300,
+    height: 45,
+    alignItems: 'center',
+    backgroundColor: 'rgba(255,255,255,0.5)'
+  },
 });
