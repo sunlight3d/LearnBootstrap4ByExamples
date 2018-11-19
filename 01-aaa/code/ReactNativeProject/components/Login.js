@@ -1,61 +1,27 @@
-/**
- yarn add react-native-vector-icons
- yarn add react-native-fbsdk
- react-native link
- */
+/** @format */
+/*
+Nguyen Duc Hoang (Mr)
+Youtube channel: https://www.youtube.com/c/nguyenduchoang
+Programming tutorial channel
+This is Login Screen
+Install icons: react-native-vector-icons
+*/
+
 import React, { Component } from 'react'
 import {
-  Text,
   StyleSheet,
+  Text,
   View,
+  TextInput,
   TouchableOpacity,
   TouchableWithoutFeedback,
-  TextInput,
-  Keyboard,
+  Keyboard
 } from 'react-native'
-// const FBSDK = require('react-native-fbsdk')
-// const {
-//   LoginManager,
-// } = FBSDK
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
-export default class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: '',
-      password: ''
-    }
-  }
-  async loginWithFacebook() {
-    /*
-    LoginManager.logInWithReadPermissions(['public_profile']).then(
-      function(result) {
-        if (result.isCancelled) {
-          alert('Login was cancelled');
-        } else {
-          alert('Login was successful with permissions: '
-            + result.grantedPermissions.toString());
-        }
-      },
-      function(error) {
-        alert('Login failed with error: ' + error);
-      }
-    )
-    */
-  }
-  _onLogin() {
 
-  }
+export default class Login extends Component {
   render() {
-    const FacebookButton = (props) => (
-      <FontAwesome.Button name="facebook"
-        {...props}
-        backgroundColor="#3b5998"
-        onPress={this.loginFacebook}>
-        <Text style={styles.loginButtonTitle}>Login with Facebook</Text>
-      </FontAwesome.Button>
-    )
     const Divider = (props) => {
       return <View {...props}>
         <View style={styles.line}></View>
@@ -64,37 +30,50 @@ export default class Login extends Component {
       </View>
     }
     return (
+      //Donot dismis Keyboard when click outside of TextInput
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.container}>
           <View style={styles.up}>
-            <Ionicons name="ios-speedometer" size={100} color={'rgb(221, 97, 97)'} />
-            <Text style={styles.title}>Sharing your images for everybody</Text>
+            <Ionicons
+              name="ios-speedometer"
+              size={100}
+              color={'rgb(221, 97, 97)'}>
+            </Ionicons>
+            <Text style={styles.title}>
+              Sharing your images for everyone
+          </Text>
           </View>
           <View style={styles.down}>
             <View style={styles.textInputContainer}>
-              <TextInput style={styles.textInput}
-                onChangeText={(email) => this.setState({ email })}
+              <TextInput
+                style={styles.textInput}
                 textContentType='emailAddress'
                 keyboardType='email-address'
                 placeholder="Enter your email"
-                value={this.state.email}
-              />
+              >
+              </TextInput>
             </View>
             <View style={styles.textInputContainer}>
-              <TextInput style={styles.textInput}
-                onChangeText={(password) => this.setState({ password })}
-                secureTextEntry={true}
+              <TextInput
+                style={styles.textInput}
                 placeholder="Enter your password"
-                value={this.state.password}
-              />
+                secureTextEntry={true}
+              >
+              </TextInput>
             </View>
-            <TouchableOpacity onPress={this._onLogin} style={styles.loginButton}>
+            <TouchableOpacity style={styles.loginButton}>
               <Text style={styles.loginButtonTitle}>LOGIN</Text>
             </TouchableOpacity>
             <Divider style={styles.divider}></Divider>
-            <FacebookButton style={styles.facebookButton} />
+            <FontAwesome.Button
+              style={styles.facebookButton}
+              name="facebook"
+              backgroundColor="#3b5998"
+            >
+              <Text style={styles.loginButtonTitle}>Login with Facebook</Text>
+            </FontAwesome.Button>
           </View>
-        </View >
+        </View>
       </TouchableWithoutFeedback>
 
     )
@@ -113,38 +92,30 @@ const styles = StyleSheet.create({
     flex: 3,
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center',
-    // backgroundColor:'green', 
+    alignItems: 'center'
   },
   down: {
-    flex: 7,
+    flex: 7,//70% of column
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    // backgroundColor:'powderblue',   
-    alignItems: 'center',
+    alignItems: 'center'
   },
   title: {
-    fontFamily: 'SourceSansPro-Light',// Run react-native link         
+    color: 'white',
     color: 'rgb(255,119,34)',
-    margin: 10, fontSize: 23,
-    width: 400,
     textAlign: 'center',
-  },
-  loginButtonTitle: {
-    fontFamily: 'SourceSansPro-Regular',
-    fontSize: 18,
-    color: 'white'
+    width: 400,
+    fontSize: 23
   },
   textInputContainer: {
     paddingHorizontal: 10,
     borderRadius: 6,
     marginBottom: 20,
-    backgroundColor: 'rgba(255,255,255,0.3)'
+    backgroundColor: 'rgba(255,255,255,0.2)'//a = alpha = opacity
   },
   textInput: {
     width: 280,
-    height: 45,    
-    justifyContent: 'center',
+    height: 45
   },
   loginButton: {
     width: 300,
@@ -154,19 +125,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'rgb(221, 97, 97)'
   },
+  loginButtonTitle: {
+    fontSize: 18,
+    color: 'white'
+  },
   facebookButton: {
     width: 300,
     height: 45,
     borderRadius: 6,
     justifyContent: 'center',
-  },
-  //divider
-  divider: {
-    height: 40,
-    width: 298,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center'
   },
   line: {
     height: 1,
@@ -176,5 +143,12 @@ const styles = StyleSheet.create({
   textOR: {
     flex: 1,
     textAlign: 'center'
+  },
+  divider: {
+    flexDirection: 'row',
+    height: 40,
+    width: 298,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
-});
+})
