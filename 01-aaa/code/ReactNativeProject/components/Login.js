@@ -19,7 +19,6 @@ import {
 // } = FBSDK
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
-
 export default class Login extends Component {
   constructor(props) {
     super(props);
@@ -68,7 +67,7 @@ export default class Login extends Component {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.container}>
           <View style={styles.up}>
-            <Ionicons name="ios-speedometer" size={100} color="rgb(221, 97, 97)" />
+            <Ionicons name="ios-speedometer" size={100} color={'rgb(221, 97, 97)'} />
             <Text style={styles.title}>Sharing your images for everybody</Text>
           </View>
           <View style={styles.down}>
@@ -144,7 +143,7 @@ const styles = StyleSheet.create({
   },
   textInput: {
     width: 280,
-    height: 45,
+    height: 45,    
     justifyContent: 'center',
   },
   loginButton: {
