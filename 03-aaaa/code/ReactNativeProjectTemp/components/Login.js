@@ -42,7 +42,7 @@ export default class Login extends Component {
             </Ionicons>
             <Text style={styles.title}>
               Sharing your images to everyone
-          </Text>
+            </Text>
           </View>
           <View style={styles.down}>
             <View style={styles.textInputContainer}>
