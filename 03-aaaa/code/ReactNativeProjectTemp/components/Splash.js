@@ -18,6 +18,9 @@ var {height, width} = Dimensions.get('window')
 
 //colors 
 export default class Splash extends Component {
+  static navigationOptions = {
+    header: null,    
+  }
   state = {
     logoOpacity: new Animated.Value(0),
     titleMarginTop: new Animated.Value(height / 2),
@@ -39,7 +42,9 @@ export default class Splash extends Component {
         toValue: 10,
         duration: 1000,              
       })
-    ]).start();
+    ]).start(() => {
+      this.props.navigation.navigate('Login')
+    });
   }
   render() {    
     return (    

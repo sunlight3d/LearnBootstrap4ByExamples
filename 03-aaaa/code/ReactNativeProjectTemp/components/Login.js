@@ -22,6 +22,9 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome'
 //colors 
 import {COLOR_PINK, COLOR_PINK_LIGHT, COLOR_FACEBOOK, COLOR_PINK_MEDIUM} from './myColors'
 export default class Login extends Component {
+  static navigationOptions = {
+    header: null,    
+  }
   render() {
     const Divider = (props) => {
       return <View {...props}>
