@@ -1,10 +1,8 @@
-/** @format */
 /*
 Nguyen Duc Hoang (Mr)
 Youtube channel: https://www.youtube.com/c/nguyenduchoang
 Programming tutorial channel
-This is Login Screen
-Install icons: react-native-vector-icons
+This is Splash Screen
 */
 
 import React, { Component } from 'react'
@@ -13,19 +11,16 @@ import {
   Text,
   View,
   Animated,
-  TextInput,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-  Keyboard,
-  Image
+  Dimensions
 } from 'react-native'
 import {COLOR_PINK, COLOR_PINK_LIGHT, COLOR_FACEBOOK, COLOR_PINK_MEDIUM} from './myColors'
+var {height, width} = Dimensions.get('window')
 
 //colors 
 export default class Splash extends Component {
   state = {
     logoOpacity: new Animated.Value(0),
-    titleMarginTop: 100
+    titleMarginTop: new Animated.Value(height / 2),
   }
   fadeLogo() {
     Animated.timing(this.state.logoOpacity,{
@@ -39,6 +34,10 @@ export default class Splash extends Component {
       Animated.timing(this.state.logoOpacity,{
         toValue: 1,                  
         duration: 2000,              
+      }),
+      Animated.timing(this.state.titleMarginTop, {        
+        toValue: 10,
+        duration: 1000,              
       })
     ]).start();
   }
@@ -47,9 +46,9 @@ export default class Splash extends Component {
       <View style={styles.container}>
         <Animated.Image source={require('../images/logo.png')} 
           style={{...styles.logo, opacity: this.state.logoOpacity}}/>
-        <Text style={{...styles.title, marginTop: titleMarginTop}}>
+        <Animated.Text style={{...styles.title, marginTop: this.state.titleMarginTop}}>
             Sharing your images to everyone
-        </Text>
+        </Animated.Text>
       </View>
     )
   }
