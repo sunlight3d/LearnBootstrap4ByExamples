@@ -5,6 +5,8 @@ Youtube channel: https://www.youtube.com/c/nguyenduchoang
 Programming tutorial channel
 This is Login Screen
 Install icons: react-native-vector-icons
+This lesson will implement "Facebook login"
+1. Install react-native-fbsdk & create App in "Facebook Developer" page
 */
 
 import React, { Component } from 'react'
@@ -16,16 +18,31 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
   Keyboard
-} from 'react-native'
+} from 'react-native'   
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import {
   COLOR_PINK, COLOR_PINK_LIGHT, 
   COLOR_FACEBOOK, COLOR_PINK_MEDIUM} 
 from './myColors'
+//Login Facebook
+import {LoginManager} from 'react-native-fbsdk'
 export default class Login extends Component {
   static navigationOptions = {
     header: null,    
+  }
+  async loginFacebook() {
+    try {
+      let result = await LoginManager.logInWithReadPermissions(['public_profile'])
+      if (result.isCancelled) {
+        alert('Login was cancelled');
+      } else {
+        alert('Login was successful with permissions: '
+          + result.grantedPermissions.toString());
+      }
+    } catch(error) {
+      alert('Login failed with error:'+error)
+    }
   }
   render() {
     const Divider = (props) => {
@@ -74,6 +91,7 @@ export default class Login extends Component {
             <FontAwesome.Button
               style={styles.facebookButton}
               name="facebook"
+              onPress={this.loginFacebook}
               backgroundColor={COLOR_FACEBOOK}
             >
               <Text style={styles.loginButtonTitle}>Login with Facebook</Text>

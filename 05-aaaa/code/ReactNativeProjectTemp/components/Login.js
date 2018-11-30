@@ -8,7 +8,9 @@ Install icons: react-native-vector-icons
 Login Facebook:
 yarn add react-native-fbsdk
 react-native link react-native-fbsdk
-TypeError: undefined is not an object (evaluating 'LoginManager.logInWithReadPermissions'
+//Steps to connect Facebook
+https://developers.facebook.com/quickstarts/136213253812236/?platform=android
+
 */
 
 import React, { Component } from 'react'
@@ -27,7 +29,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome'
 //colors 
 import { COLOR_PINK, COLOR_PINK_LIGHT, COLOR_FACEBOOK, COLOR_PINK_MEDIUM } from './myColors'
 //Login Facebook
-// import { LoginManager } from "react-native-fbsdk"
+import { LoginManager } from "react-native-fbsdk"
 
 export default class Login extends Component {
   static navigationOptions = {
@@ -44,18 +46,18 @@ export default class Login extends Component {
   }
   
   async loginFacebook() {
-    alert("1234")
-    // try {
-    //   let result = await LoginManager.logInWithReadPermissions(['public_profile'])
-    //   if (result.isCancelled) {
-    //     alert('Login was cancelled');
-    //   } else {
-    //     alert('Login was successful with permissions: '
-    //       + result.grantedPermissions.toString());
-    //   }
-    // } catch (error) {
-    //   alert('Login failed with error: ' + error)      
-    // }    
+    // alert("1234")
+    try {
+      let result = await LoginManager.logInWithReadPermissions(['public_profile'])
+      if (result.isCancelled) {
+        alert('Login was cancelled');
+      } else {
+        alert('Login was successful with permissions: '
+          + result.grantedPermissions.toString());
+      }
+    } catch (error) {
+      alert('Login failed with error: ' + error)      
+    }    
   }
   render() {
     const Divider = (props) => {
