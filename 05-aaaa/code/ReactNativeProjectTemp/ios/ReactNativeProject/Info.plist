@@ -72,4 +72,24 @@
 		<string>Zocial.ttf</string>
 	</array>
 </dict>
+<key>CFBundleURLTypes</key>
+<array>
+  <dict>
+    <key>CFBundleURLSchemes</key>
+    <array>
+      <string>136213253812236</string>
+    </array>
+  </dict>
+</array>
+<key>FacebookAppID</key>
+<string>136213253812236</string>
+<key>FacebookDisplayName</key>
+<string>ReactNativeProject</string>
+<key>LSApplicationQueriesSchemes</key>
+<array>
+  <string>fbapi</string>
+  <string>fb-messenger-share-api</string>
+  <string>fbauth2</string>
+  <string>fbshareextension</string>
+</array>
 </plist>
