@@ -36,7 +36,7 @@
   return YES;
 }
   - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
-    BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:application
+    BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:app
                                                                   openURL:url
                                                         sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
                                                                annotation:options[UIApplicationOpenURLOptionsAnnotationKey]
