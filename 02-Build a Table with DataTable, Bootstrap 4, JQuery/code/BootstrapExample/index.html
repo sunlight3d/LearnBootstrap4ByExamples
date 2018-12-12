@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Webpage example using DataTables and JQuery</title>	
+  <!-- Import Bootstrap and JQuery -->
+  <link rel="stylesheet" 
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> 
+  <script 
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js">    
+  </script>        
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+  </script>
+  <!-- DataTables -->
+  <link rel="stylesheet" 
+    type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css"> 
+  <script type="text/javascript" 
+    charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js">    
+  </script>
+  <!-- My CSS and JQuery -->
+  <link href="./css/style.css" rel="stylesheet">
+  <script type="text/javascript" src="./jquery/index.js"></script> 
+</head>
+<body>
+<div class="container-fluid">
+  <h1 class="display-4 my-4 text-info">List of users</h1>
+  <table class="table table-striped" id="users" style="width: 100%;">
+    <thead >
+      <tr id="list-header">
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Address</th>
+        <th scope="col">Phone</th>
+      </tr>
+    </thead>  
+    <tbody>      
+    </tbody>
+  </table>
+  <button type="button" class="btn btn-primary" id="btnReloadData">Reload data</button>
+</div>
+</body>
+</html>	
+
+
+
+
+
+
+
+
+
+
+
+

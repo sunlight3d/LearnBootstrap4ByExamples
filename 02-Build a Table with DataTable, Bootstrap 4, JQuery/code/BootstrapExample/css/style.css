@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif+TC');
+html, body {
+	width: 100%;
+	height: 100%;
+	font-family: 'Noto Serif TC';
+	font-size: 18px;	
+}
