@@ -1,55 +1,53 @@
+<!-- 
+Nguyen Duc Hoang (Mr)
+Youtube channel: https://www.youtube.com/c/nguyenduchoang
+Programming tutorial channel 
+-->
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Webpage example using DataTables and JQuery</title>	
+	<title>Login Form with validation using JQuery</title>	
   <!-- Import Bootstrap and JQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+  </script>
   <link rel="stylesheet" 
     href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> 
   <script 
     src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js">    
-  </script>        
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
-  </script>
-  <!-- DataTables -->
-  <link rel="stylesheet" 
-    type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css"> 
-  <script type="text/javascript" 
-    charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js">    
-  </script>
+  </script>            
   <!-- My CSS and JQuery -->
   <link href="./css/style.css" rel="stylesheet">
   <script type="text/javascript" src="./jquery/index.js"></script> 
 </head>
 <body>
-<div class="container-fluid bg" >
-  <div class="row justify-content-center">
-    <div class="col-md-3 col-sm-6 col-xs-12 row-container">
-      <form>
-        <h1>Login Form Example</h1>
-        <div class="form-group">
-          <label for="email" class="label">Email address</label>
-          <input type="email" class="form-control" id="email" placeholder="Enter email">          
-          <p class="emailError"></p>
-        </div>
-        <div class="form-group">
-          <label for="password" class="label">Password</label>
-          <input type="password" class="form-control" id="password" placeholder="Password">
-          <p class="passwordError"></p>
-        </div>
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="rememberMe">
-          <label class="form-check-label" for="rememberMe">Check me out</label>
-        </div>        
-        <button type="submit" class="btn btn-success btn-block">Submit</button>
-      </form>
+  <div class="container-fluid bg">
+    <div class="row justify-content-center">
+      <div class="col-md-3 col-sm-6 col-xs-12 row-container">
+        <form>
+          <h1>Login with your information</h1>
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter email">
+            <p class="emailError"></p>
+          </div>
+          <div class="form-group">
+            <label for="password" class="label">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Password">            
+            <p class="passwordError"></p>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="rememberMe">
+            <label class="form-check-label" for="rememberMe">Check me out</label>
+          </div>   
+          <button type="submit" class="btn btn-success btn-block my-3">Login</button>
+        </form>
+      </div>
     </div>
   </div>
-</div>
 </body>
 </html>	
-
 
 
 
