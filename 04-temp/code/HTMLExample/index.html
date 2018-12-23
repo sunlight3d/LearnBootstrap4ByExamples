@@ -1,0 +1,79 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Student management</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/main.css" />
+    <script src="./javascripts/main.js"></script>
+</head>
+
+<body>
+    <h1 align="center">Employee Management</h1>
+    <form action="">
+        <table style="width:100%">
+            <tr>
+                <td align="right">Name</td>
+                <td><input type="text" placeholder="Enter name"></td>
+            </tr>
+            <tr>
+                <td align="right">Date of birth</td>
+                <td><input type="date" id="dob" name="trip-start" min="1975-01-01" max="2002-12-31"></td>
+            </tr>
+            <tr>
+                <td align="right">Gender</td>
+                <td>
+                    <label><input type="radio" value="Male" name="gender"> Male</label>
+                    <label><input type="radio" value="Female" name="gender">Female</label>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">Languages</td>
+                <td>
+                    <label><input type="checkbox" value="English" checked name="language">English</label>
+                    <label><input type="checkbox" value="Vietnamese" name="language"> Vietnamese</label>
+                    <label><input type="checkbox" value="Chinese" name="language">Chinese</label>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">Department</td>
+                <td>
+                    <select>
+                        <option value="Administration">Administration</option>
+                        <option value="Technical">Technical</option>
+                        <option value="Sales">Sales</option>
+                    </select>
+                    <a href="#" role="button" onclick="btnAddDepartment()">Add department</a>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <button onclick="btnAddEmployee()">Add employee</button>
+                </td>
+            </tr>
+        </table>
+        <h1 align="center">List of employees</h1>
+        <table style="width:100%" id="tblEmployees">
+            <tr>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Date of Birth</th>
+                <th>Gender</th>
+                <th>Language</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>Hoang</td>
+                <td>Sales</td>
+                <td>25/10/1979</td>
+                <td>Male</td>
+                <td>English, Vietnamese</td>
+                <td><a href="#" role="button" onclick="btnDeleteEmployee()">Delete</a></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
