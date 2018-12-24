@@ -16,11 +16,11 @@
         <table style="width:100%">
             <tr>
                 <td align="right">Name</td>
-                <td><input type="text" placeholder="Enter name"></td>
+                <td><input type="text" placeholder="Enter name" required></td>
             </tr>
             <tr>
                 <td align="right">Date of birth</td>
-                <td><input type="date" id="dob" name="trip-start" min="1975-01-01" max="2002-12-31"></td>
+                <td><input type="date" id="dob" name="trip-start" min="1975-01-01" max="2002-12-31" required></td>
             </tr>
             <tr>
                 <td align="right">Gender</td>
@@ -32,15 +32,15 @@
             <tr>
                 <td align="right">Languages</td>
                 <td>
-                    <label><input type="checkbox" value="English" checked name="language">English</label>
-                    <label><input type="checkbox" value="Vietnamese" name="language"> Vietnamese</label>
-                    <label><input type="checkbox" value="Chinese" name="language">Chinese</label>
+                    <label><input type="checkbox" value="English" checked name="language" class="checkboxLanguage">English</label>
+                    <label><input type="checkbox" value="Vietnamese" name="language" class="checkboxLanguage"> Vietnamese</label>
+                    <label><input type="checkbox" value="Chinese" name="language" class="checkboxLanguage">Chinese</label>
                 </td>
             </tr>
             <tr>
                 <td align="right">Department</td>
                 <td>
-                    <select>
+                    <select id="department">
                         <option value="Administration">Administration</option>
                         <option value="Technical">Technical</option>
                         <option value="Sales">Sales</option>
@@ -51,29 +51,30 @@
             <tr>
                 <td></td>
                 <td>
-                    <button onclick="btnAddEmployee()">Add employee</button>
+                    <button onclick="btnAddEmployee()" type="submit">Add employee</button>
                 </td>
             </tr>
         </table>
-        <h1 align="center">List of employees</h1>
-        <table style="width:100%" id="tblEmployees">
-            <tr>
-                <th>Name</th>
-                <th>Department</th>
-                <th>Date of Birth</th>
-                <th>Gender</th>
-                <th>Language</th>
-                <th></th>
-            </tr>
-            <tr>
-                <td>Hoang</td>
-                <td>Sales</td>
-                <td>25/10/1979</td>
-                <td>Male</td>
-                <td>English, Vietnamese</td>
-                <td><a href="#" role="button" onclick="btnDeleteEmployee()">Delete</a></td>
-            </tr>
-        </table>
     </form>
+    <h1 align="center">List of employees</h1>
+    <table style="width:100%" id="tblEmployees">
+        <tr>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Date of Birth</th>
+            <th>Gender</th>
+            <th>Language</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>Hoang</td>
+            <td>Sales</td>
+            <td>25/10/1979</td>
+            <td>Male</td>
+            <td>English, Vietnamese</td>
+            <td><a href="#" role="button" onclick="btnDeleteEmployee()">Delete</a></td>
+        </tr>
+    </table>
 </body>
+
 </html>
