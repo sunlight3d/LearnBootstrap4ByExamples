@@ -23,13 +23,14 @@ function loadInputEmployee() {
 function btnAddDepartment() {    
 
 }
-function btnAddEmployee() {
+
+function btnAddEmployee(event) {
     var newDepartment = loadInputEmployee()    
     startId = startId + 1
     newDepartment.id = startId
     employees.push(newDepartment)
     addRowDataToTable(newDepartment)
-    
+    event.preventDefault()
 }
 function addRowDataToTable(employeeObject) {
     var table = document.getElementById("tblEmployees");
@@ -41,7 +42,7 @@ function addRowDataToTable(employeeObject) {
     cellDepartment.innerHTML = employeeObject.department
 
     var cellDOB= row.insertCell(2);
-    cellDOB.innerHTML = employeeObject.dateOfBirth
+    cellDOB.innerHTML = `${employeeObject.dateOfBirth}`
 
     var cellGender= row.insertCell(3);
     cellGender.innerHTML = employeeObject.gender
@@ -49,17 +50,8 @@ function addRowDataToTable(employeeObject) {
     var cellLanguages= row.insertCell(4);
     cellLanguages.innerHTML = employeeObject.languages
     
-    var cellFinal= row.insertCell(5);
-    
-    var btnDelete = document.createElement('a');
-    btnDelete.role = "button";
-    btnDelete.id = `${startId}`;   
-    btnDelete.onclick = function(){
-        deleteEmployee(this.id)
-    }
-    //cellFinal.appendChild(btnDelete)
-    cellFinal.innerHTML = `<a href="#" role="button" onclick="btnDeleteEmployee()">Delete</a>`
-
+    // var cellFinal= row.insertCell(5);    
+    // cellFinal.innerHTML = `<a href="#" role="button" onclick="${btnDeleteEmployee(employeeObject.id)}">Delete</a>`    
 }
 function deleteEmployee(id) {    
     employees = employees.filter(function (employee) {
