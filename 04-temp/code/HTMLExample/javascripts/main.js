@@ -11,6 +11,10 @@ function loadInputEmployee() {
         //ternary 
         languageStr = languageStr.length > 0 ? `${languageStr}<br>${language.value}`: `${language.value}`
     }) 
+    // for(var i = 0; i < languages.length; i++) {
+    //     var language = languages[i]
+    //     languageStr = languageStr.length > 0 ? `${languageStr}<br>${language.value}`: `${language.value}`
+    // }
     var departmentElement = document.getElementById("department")
     var department = departmentElement.options[departmentElement.selectedIndex].value 
     var newEmployee = {name, dateOfBirth, gender, languages: languageStr, department}
