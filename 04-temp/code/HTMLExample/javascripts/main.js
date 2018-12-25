@@ -24,56 +24,44 @@ function btnAddDepartment() {
 
 }
 function btnAddEmployee() {
-    var newDepartment = loadInputEmployee()
+    var newDepartment = loadInputEmployee()    
     startId = startId + 1
     newDepartment.id = startId
     employees.push(newDepartment)
     addRowDataToTable(newDepartment)
+    
 }
 function addRowDataToTable(employeeObject) {
     var table = document.getElementById("tblEmployees");
     var row = table.insertRow(startId);
+    var cellName = row.insertCell(0);
+    cellName.innerHTML = employeeObject.name
 
-    // var row = document.createElement("TR");
-    // row.setAttribute("id", `${employeeObject.id}`);
-    // //Name
-    // var nameColumn = document.createElement("TD");
-    // var nameColumnData = document.createTextNode(employeeObject.name);
-    // nameColumn.appendChild(nameColumnData);
-    // document.getElementById(employeeObject.id).appendChild(nameColumn);    
-    // //Department
-    // var departmentColumn = document.createElement("TD");
-    // var departmentColumnData = document.createTextNode(employeeObject.department);
-    // departmentColumn.appendChild(departmentColumnData);
-    // document.getElementById(employeeObject.id).appendChild(departmentColumn);
-    // //Date of birth
-    // var dobColumn = document.createElement("TD");
-    // var dobColumnData = document.createTextNode(employeeObject.dateOfBirth);
-    // dobColumn.appendChild(dobColumnData);
-    // document.getElementById(employeeObject.id).appendChild(dobColumn);
-    // //Gender
-    // var genderColumn = document.createElement("TD");
-    // var genderColumnData = document.createTextNode(employeeObject.gender);
-    // genderColumn.appendChild(genderColumnData);
-    // document.getElementById(employeeObject.id).appendChild(genderColumn);
-    // //Language
-    // var languageColumn = document.createElement("TD");
-    // var languageColumnData = document.createTextNode(employeeObject.languages);
-    // languageColumn.appendChild(languageColumnData);
-    // document.getElementById(employeeObject.id).appendChild(languageColumn);
-    // //Delete
-    // var finalColumn = document.createElement("TD");
-    // var btnDelete = document.createElement('input');
-    // btnDelete.type = "button";
-    // btnDelete.className = "btn";
-    // btnDelete.value = entry.email;
-    // //btnDelete.onclick = (function(entry) {return function() {chooseUser(entry);}})(entry);
-    // td.appendChild(btn);
+    var cellDepartment = row.insertCell(1);
+    cellDepartment.innerHTML = employeeObject.department
 
-    // finalColumn.appendChild(finalColumnData);
-    // document.getElementById(employeeObject.id).appendChild(finalColumn);
+    var cellDOB= row.insertCell(2);
+    cellDOB.innerHTML = employeeObject.dateOfBirth
+
+    var cellGender= row.insertCell(3);
+    cellGender.innerHTML = employeeObject.gender
+
+    var cellLanguages= row.insertCell(4);
+    cellLanguages.innerHTML = employeeObject.languages
+    
+    var cellFinal= row.insertCell(5);
+    
+    var btnDelete = document.createElement('a');
+    btnDelete.role = "button";
+    btnDelete.id = `${startId}`;   
+    btnDelete.onclick = function(){
+        deleteEmployee(this.id)
+    }
+    //cellFinal.appendChild(btnDelete)
+    cellFinal.innerHTML = `<a href="#" role="button" onclick="btnDeleteEmployee()">Delete</a>`
+
 }
-function btnDeleteEmployee(id) {    
+function deleteEmployee(id) {    
     employees = employees.filter(function (employee) {
         return employee.id === id
     })    
