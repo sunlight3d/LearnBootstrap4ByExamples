@@ -1,6 +1,7 @@
 var employees = []
+var departments = ["Administration","Technical","Sales"]
 var startId = 0
-//alert(`Danh sach : ${JSON.stringify(employees)}, tong so: ${employees.length} ong`)
+
 function loadInputEmployee() {
     var name = document.getElementById('name').value
     var dateOfBirth =  document.getElementById('dob').value    
@@ -15,20 +16,39 @@ function loadInputEmployee() {
     //     var language = languages[i]
     //     languageStr = languageStr.length > 0 ? `${languageStr}<br>${language.value}`: `${language.value}`
     // }
-    var departmentElement = document.getElementById("department")
+    reloadDepartments()
+    var departmentElement = document.getElementById("departments")
     var department = departmentElement.options[departmentElement.selectedIndex].value 
     var newEmployee = {name, dateOfBirth, gender, languages: languageStr, department}
     return newEmployee
 }
 function btnAddDepartment() {    
-
+    var newDepartment = prompt("Please enter your new department:", "");
+    if (newDepartment == null || newDepartment == "") {
+        //do nothing
+    } else {
+        departments.push(newDepartment)
+        reloadDepartments()
+    }
+}
+function reloadDepartments() {    
+    var selectDepartments = document.getElementById("departments")    
+    while (selectDepartments.length > 0) {
+        selectDepartments.remove(selectDepartments.length-1);
+    }
+    departments.forEach(function (department){
+        var option = document.createElement("option");
+        option.setAttribute("value", department);
+        option.innerHTML = department
+        selectDepartments.appendChild(option)
+    })
 }
 
 function btnAddEmployee(event) {
-    var newDepartment = loadInputEmployee()        
-    newDepartment.id = startId
-    employees.push(newDepartment)
-    addRowDataToTable(newDepartment)
+    var newEmployee = loadInputEmployee()        
+    newEmployee.id = startId
+    employees.push(newEmployee)
+    addRowDataToTable(newEmployee)
     event.preventDefault()
 }
 function addRowDataToTable(employeeObject) {
@@ -55,8 +75,8 @@ function addRowDataToTable(employeeObject) {
 }
 function reloadData() {
     var table = document.getElementById("tblEmployees");
-    while(table.rows.length > 1) {
-        table.removeChild(table.lastChild);
+    while(table.rows.length > 1) {        
+        table.deleteRow(table.rows.length - 1)
     }    
     startId = 0
     employees.forEach(function(employee){        
@@ -64,10 +84,12 @@ function reloadData() {
     })
 }
 function deleteEmployee(id) {    
-    employees = employees.filter(function (employee) {
-        return employee.id != id
-    })    
-    reloadData()
+    if (confirm("Are you sure you want to delete this ?")) {
+        employees = employees.filter(function (employee) {
+            return employee.id != id
+        })    
+        reloadData()    
+    }
 }
 //Kieu gi cung vao day
 // var student = {
