@@ -25,14 +25,14 @@ function btnAddDepartment() {
 }
 
 function btnAddEmployee(event) {
-    var newDepartment = loadInputEmployee()    
-    startId = startId + 1
+    var newDepartment = loadInputEmployee()        
     newDepartment.id = startId
     employees.push(newDepartment)
     addRowDataToTable(newDepartment)
     event.preventDefault()
 }
 function addRowDataToTable(employeeObject) {
+    startId = startId + 1
     var table = document.getElementById("tblEmployees");
     var row = table.insertRow(startId);
     var cellName = row.insertCell(0);
@@ -50,14 +50,24 @@ function addRowDataToTable(employeeObject) {
     var cellLanguages= row.insertCell(4);
     cellLanguages.innerHTML = employeeObject.languages
     
-    // var cellFinal= row.insertCell(5);    
-    // cellFinal.innerHTML = `<a href="#" role="button" onclick="${btnDeleteEmployee(employeeObject.id)}">Delete</a>`    
+    var cellFinal= row.insertCell(5);    
+    cellFinal.innerHTML = `<a href="#" role="button" onclick="deleteEmployee(${employeeObject.id})">Delete</a>`        
+}
+function reloadData() {
+    var table = document.getElementById("tblEmployees");
+    while(table.rows.length > 1) {
+        table.removeChild(table.lastChild);
+    }    
+    startId = 0
+    employees.forEach(function(employee){        
+        addRowDataToTable(employee)
+    })
 }
 function deleteEmployee(id) {    
     employees = employees.filter(function (employee) {
-        return employee.id === id
+        return employee.id != id
     })    
-    document.getElementById("employees").deleteRow(id);
+    reloadData()
 }
 //Kieu gi cung vao day
 // var student = {
