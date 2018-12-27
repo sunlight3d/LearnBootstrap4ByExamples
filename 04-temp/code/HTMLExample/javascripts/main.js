@@ -56,6 +56,7 @@ var validateInput = function () {
 function btnAddEmployee(event) {
     if(validateInput() == false) {
         return
+        //Ko lam gi them
     }
     var newEmployee = loadInputEmployee()        
     newEmployee.id = startId
@@ -67,10 +68,10 @@ function addRowDataToTable(employeeObject) {
     startId = startId + 1
     var table = document.getElementById("tblEmployees");
     var row = table.insertRow(startId);
-    var cellName = row.insertCell(0);
+    var cellName = row.insertCell(0);//column 0
     cellName.innerHTML = employeeObject.name
 
-    var cellDepartment = row.insertCell(1);
+    var cellDepartment = row.insertCell(1);//column 1
     cellDepartment.innerHTML = employeeObject.department
 
     var cellDOB= row.insertCell(2);
