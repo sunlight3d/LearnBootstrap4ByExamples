@@ -1,7 +1,7 @@
 var employees = []
 var departments = ["Administration","Technical","Sales"]
 var startId = 0
-
+reloadDepartments()
 function loadInputEmployee() {
     var name = document.getElementById('name').value
     var dateOfBirth =  document.getElementById('dob').value    
@@ -15,8 +15,7 @@ function loadInputEmployee() {
     // for(var i = 0; i < languages.length; i++) {
     //     var language = languages[i]
     //     languageStr = languageStr.length > 0 ? `${languageStr}<br>${language.value}`: `${language.value}`
-    // }
-    reloadDepartments()
+    // } 
     var departmentElement = document.getElementById("departments")
     var department = departmentElement.options[departmentElement.selectedIndex].value 
     var newEmployee = {name, dateOfBirth, gender, languages: languageStr, department}
@@ -32,7 +31,10 @@ function btnAddDepartment() {
     }
 }
 function reloadDepartments() {    
-    var selectDepartments = document.getElementById("departments")    
+    var selectDepartments = document.getElementById("departments")   
+    if(!selectDepartments) {
+        return
+    }
     while (selectDepartments.length > 0) {
         selectDepartments.remove(selectDepartments.length-1);
     }
@@ -43,8 +45,18 @@ function reloadDepartments() {
         selectDepartments.appendChild(option)
     })
 }
-
+var validateInput = function () {
+    var name = document.getElementById('name').value.trim()
+    var dateOfBirth =  document.getElementById('dob').value.trim()   
+    if (name.length == 0 || dateOfBirth.length == 0){
+        return false
+    }
+    return true
+}
 function btnAddEmployee(event) {
+    if(validateInput() == false) {
+        return
+    }
     var newEmployee = loadInputEmployee()        
     newEmployee.id = startId
     employees.push(newEmployee)
@@ -91,6 +103,7 @@ function deleteEmployee(id) {
         reloadData()    
     }
 }
+
 //Kieu gi cung vao day
 // var student = {
 //     //key - value
