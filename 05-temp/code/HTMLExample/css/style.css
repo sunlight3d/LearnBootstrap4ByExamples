@@ -1,12 +1,57 @@
 html, body {
-    background-image: linear-gradient(gray, white);
+    background-image: linear-gradient(gray, white);    
+    font-family: Arial, Helvetica, sans-serif
 }
-h1, h2 {
-    color: white;
-}
-header { 
-    display: block;
-    height: 120px;
+header {     
+    height: 90px;
     text-align: center;
-    background-color: royalblue;
+    background-color: darkslategrey;
+    color: white;       
+}
+header .header {
+    padding: 37px;
+}
+header a {
+    color: white;    
+    padding: 20px;        
+}
+#imgHeader {  
+    width: 100%;  
+}
+.divImageHeader {
+    background-color: white;
+    padding: 10px;    
+}
+p {    
+    line-height: 25px;
+}
+.td80 {
+    width:80%; 
+    padding: 20px;    
+}
+.td20 {
+    padding-left: 10px;    
+    padding-top: 10px; 
+    width:20%;     
+    background-color: gray;    
+}
+.td20 h2 {
+    color: darkslategrey;
+    
+}
+.td20 p, h3 {
+    color: white; 
+}
+.td20 a {
+    color: darkslategrey
+}
+footer { 
+    display: block;
+    height: 90px;
+    text-align: center;
+    background-color: darkslategrey;
+    color: white;       
+}
+footer p {
+    padding: 35px;
 }
