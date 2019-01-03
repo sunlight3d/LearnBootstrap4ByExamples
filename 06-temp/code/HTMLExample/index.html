@@ -1,0 +1,109 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Student management</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/main.css" />
+    <!-- <script src="./javascripts/main.js"></script> -->
+</head>
+
+<body>
+    <h1 align="center">Validation Examples</h1>
+    <form action="" onsubmit="" id='formUser'>
+        <table style="width:30%" id="student">
+            <tr>
+                <td align="left">FIRST NAME</td>
+                <td><input id="firstName" type="text" required pattern="[A-Za-z]{1,30}"></td>
+            </tr>
+            <tr>
+                <td align="left">LAST NAME</td>
+                <td><input id="lastName" type="text" pattern="[A-Za-z]{1,30}"></td>
+            </tr>
+
+            <tr>
+                <td align="left">Date of birth</td>
+                <td>
+                    <select id="days">
+
+                    </select>
+                    <select id="months">
+
+                    </select>
+                    <select id="years">
+                </td>
+
+
+                </select>
+            </tr>
+            <tr>
+                <td align="left">EMAIL ID</td>
+                <td><input id="emailId" type="text" pattern="^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$"></td>
+            </tr>
+            <tr>
+                <td align="left">MOBILE NUMBER</td>
+                <td><input id="mobileNumber" type="text" pattern="[0-9]{10}"></td>
+            </tr>
+            <tr>
+                <td align="left">Gender</td>
+                <td>
+                    <label><input type="radio" value="Male" name="gender" checked> Male</label>
+                    <label><input type="radio" value="Female" name="gender">Female</label>
+                </td>
+            </tr>
+
+            <tr>
+                <td align="left">Department</td>
+                <td>
+                    <textarea rows="4"></textarea>
+                </td>
+            </tr>
+        </table>
+        <button>Submit</button>
+        <button onclick="resetForm()">Reset</button>
+    </form>
+
+</body>
+<script>
+    function reloadDateOfBirth() {
+        var days = document.getElementById("days")
+        var option = document.createElement("option");
+        option.innerHTML = `Day`
+        days.appendChild(option)
+        for (var i = 1; i <= 31; i++) {
+            var option = document.createElement("option");
+            option.setAttribute("value", `${i}`);
+            option.innerHTML = `${i}`
+            days.appendChild(option)
+        }
+
+        var months = document.getElementById("months")
+        var option = document.createElement("option");
+        option.innerHTML = `Month`
+        months.appendChild(option)
+        for (var i = 1; i <= 12; i++) {
+            var option = document.createElement("option");
+            option.setAttribute("value", `${i}`);
+            option.innerHTML = `${i}`
+            months.appendChild(option)
+        }
+        var years = document.getElementById("years")
+        var option = document.createElement("option");
+        option.innerHTML = `Day`
+        years.appendChild(option)
+        for (var i = 1980; i <= 2000; i++) {
+            var option = document.createElement("option");
+            option.setAttribute("value", `${i}`);
+            option.innerHTML = `${i}`
+            years.appendChild(option)
+        }
+    }
+    reloadDateOfBirth()
+    function resetForm(){
+        document.getElementById("formUser").reset();
+    }
+</script>
+
+</html>
