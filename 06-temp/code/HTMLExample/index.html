@@ -40,7 +40,7 @@
             </tr>
             <tr>
                 <td align="left">EMAIL ID</td>
-                <td><input id="emailId" type="text" pattern="^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$"></td>
+                <td><input id="emailId" type="email"></td>
             </tr>
             <tr>
                 <td align="left">MOBILE NUMBER</td>
@@ -91,7 +91,7 @@
         }
         var years = document.getElementById("years")
         var option = document.createElement("option");
-        option.innerHTML = `Day`
+        option.innerHTML = `Year`
         years.appendChild(option)
         for (var i = 1980; i <= 2000; i++) {
             var option = document.createElement("option");
