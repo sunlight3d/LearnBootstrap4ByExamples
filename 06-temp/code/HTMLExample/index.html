@@ -10,61 +10,66 @@
     <!-- <script src="./javascripts/main.js"></script> -->
 </head>
 
-<body>
-    <h1 align="center">Validation Examples</h1>
-    <form action="" onsubmit="" id='formUser'>
-        <table style="width:30%" id="student">
-            <tr>
-                <td align="left">FIRST NAME</td>
-                <td><input id="firstName" type="text" required pattern="[A-Za-z]{1,30}"></td>
-            </tr>
-            <tr>
-                <td align="left">LAST NAME</td>
-                <td><input id="lastName" type="text" pattern="[A-Za-z]{1,30}"></td>
-            </tr>
+<body align="center">
+    <h1>Validation Example</h1>
+    <div align="center" style="background-color:blueviolet;width:30%; padding:20px; margin:auto;">
+        <form action="" onsubmit="" id='formUser'>
+            <table id="student">
+                <tr>
+                    <td align="left">FIRST NAME</td>
+                    <td><input id="firstName" type="text" required pattern="[A-Za-z]{1,30}"></td>
+                    <td><p>(max 30 characters a-z and A-Z)</p></td>
+                    
+                </tr>
+                <tr>
+                    <td align="left">LAST NAME</td>
+                    <td><input id="lastName" type="text" pattern="[A-Za-z]{1,30}"></td>
+                    <td><p>(max 30 characters a-z and A-Z)</p></td>
+                </tr>
 
-            <tr>
-                <td align="left">Date of birth</td>
-                <td>
-                    <select id="days">
+                <tr>
+                    <td align="left">Date of birth</td>
+                    <td>
+                        <select id="days">
+
+                        </select>
+                        <select id="months">
+
+                        </select>
+                        <select id="years">
+                    </td>
+
 
                     </select>
-                    <select id="months">
+                </tr>
+                <tr>
+                    <td align="left">EMAIL ID</td>
+                    <td><input id="emailId" type="email"></td>
+                </tr>
+                <tr>
+                    <td align="left">MOBILE NUMBER</td>
+                    <td><input id="mobileNumber" type="text" pattern="[0-9]{10}"></td>
+                    <td><p>10 digit number</p></td>                    
+                </tr>
+                <tr>
+                    <td align="left">Gender</td>
+                    <td>
+                        <label><input type="radio" value="Male" name="gender" checked> Male</label>
+                        <label><input type="radio" value="Female" name="gender">Female</label>
+                    </td>
+                </tr>
 
-                    </select>
-                    <select id="years">
-                </td>
-
-
-                </select>
-            </tr>
-            <tr>
-                <td align="left">EMAIL ID</td>
-                <td><input id="emailId" type="email"></td>
-            </tr>
-            <tr>
-                <td align="left">MOBILE NUMBER</td>
-                <td><input id="mobileNumber" type="text" pattern="[0-9]{10}"></td>
-            </tr>
-            <tr>
-                <td align="left">Gender</td>
-                <td>
-                    <label><input type="radio" value="Male" name="gender" checked> Male</label>
-                    <label><input type="radio" value="Female" name="gender">Female</label>
-                </td>
-            </tr>
-
-            <tr>
-                <td align="left">Department</td>
-                <td>
-                    <textarea rows="4"></textarea>
-                </td>
-            </tr>
-        </table>
-        <button>Submit</button>
-        <button onclick="resetForm()">Reset</button>
-    </form>
-
+                <tr>
+                    <td align="left">Address</td>
+                    <td>
+                        <textarea rows="4"></textarea>
+                    </td>
+                </tr>
+            </table>
+            <button>Submit</button>
+            <button onclick="resetForm()">Reset</button>
+        </form>
+    </div>
 </body>
 <script>
     function reloadDateOfBirth() {
@@ -101,7 +106,7 @@
         }
     }
     reloadDateOfBirth()
-    function resetForm(){
+    function resetForm() {
         document.getElementById("formUser").reset();
     }
 </script>
