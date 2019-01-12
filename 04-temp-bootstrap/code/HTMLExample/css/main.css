@@ -1,0 +1,8 @@
+tr,th, td {
+    padding: 10px;
+}
+
+.table#tblEmployees, .table#tblEmployees th, .table#tblEmployees td {
+    border: 1px solid black;   
+    border-collapse: collapse;
+}
